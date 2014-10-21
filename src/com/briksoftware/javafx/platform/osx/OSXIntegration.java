@@ -25,8 +25,6 @@ package com.briksoftware.javafx.platform.osx;
 
 import java.io.File;
 
-import com.sun.glass.ui.Application;
-
 public final class OSXIntegration {
 	private static OSXEventHandler osxHandler;
 	
@@ -43,7 +41,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleWillFinishLaunchingAction(Application app, long time) {
+		public void handleWillFinishLaunchingAction(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleWillFinishLaunchingAction(app, time);
 			} else {
@@ -52,7 +50,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleDidFinishLaunchingAction(Application app, long time) {
+		public void handleDidFinishLaunchingAction(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleDidFinishLaunchingAction(app, time);
 			} else {
@@ -61,7 +59,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleWillBecomeActiveAction(Application app, long time) {
+		public void handleWillBecomeActiveAction(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleWillBecomeActiveAction(app, time);
 			} else {
@@ -70,7 +68,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleDidBecomeActiveAction(Application app, long time) {
+		public void handleDidBecomeActiveAction(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleDidBecomeActiveAction(app, time);
 			} else {
@@ -79,7 +77,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleWillResignActiveAction(Application app, long time) {
+		public void handleWillResignActiveAction(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleWillResignActiveAction(app, time);
 			} else {
@@ -88,7 +86,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleDidResignActiveAction(Application app, long time) {
+		public void handleDidResignActiveAction(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleDidResignActiveAction(app, time);
 			} else {
@@ -97,7 +95,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleDidReceiveMemoryWarning(Application app, long time) {
+		public void handleDidReceiveMemoryWarning(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleDidReceiveMemoryWarning(app, time);
 			} else {
@@ -106,7 +104,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleWillHideAction(Application app, long time) {
+		public void handleWillHideAction(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleWillHideAction(app, time);
 			} else {
@@ -115,7 +113,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleDidHideAction(Application app, long time) {
+		public void handleDidHideAction(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleDidHideAction(app, time);
 			} else {
@@ -124,7 +122,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleWillUnhideAction(Application app, long time) {
+		public void handleWillUnhideAction(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleWillUnhideAction(app, time);
 			} else {
@@ -133,7 +131,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleDidUnhideAction(Application app, long time) {
+		public void handleDidUnhideAction(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleDidUnhideAction(app, time);
 			} else {
@@ -142,7 +140,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleOpenFilesAction(Application app, long time, String[] files) {	
+		public void handleOpenFilesAction(com.sun.glass.ui.Application app, long time, String[] files) {	
 			if (openFilesHandler != null) {
 				File[] fileObjects = new File[files.length];
 				
@@ -159,7 +157,7 @@ public final class OSXIntegration {
 		}
 
 		@Override
-		public void handleQuitAction(Application app, long time) {
+		public void handleQuitAction(com.sun.glass.ui.Application app, long time) {
 			if (handler != null) {
 				handler.handleQuitAction(app, time);
 			} else {
