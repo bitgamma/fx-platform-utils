@@ -1,0 +1,1 @@
+package com.briksoftware.javafx.platform.osx.i18n;
