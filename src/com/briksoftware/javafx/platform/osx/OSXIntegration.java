@@ -35,8 +35,11 @@ public final class OSXIntegration {
 			com.sun.glass.ui.Application lowLevelApp = com.sun.glass.ui.Application.GetApplication();
 			osxHandler = new OSXEventHandler(lowLevelApp);
 			osxMenuHandler = new OSXMenuHandler(lowLevelApp);
-			lowLevelApp.setEventHandler(osxHandler);
 		}
+	}
+	
+	public final static void installHandlers() {
+		com.sun.glass.ui.Application.GetApplication().setEventHandler(osxHandler);
 	}
 	
 	public final static boolean setOpenFilesHandler(OSXOpenFilesHandler openFilesHandler) {
