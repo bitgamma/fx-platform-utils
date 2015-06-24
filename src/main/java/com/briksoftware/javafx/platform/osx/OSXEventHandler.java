@@ -3,7 +3,7 @@ package com.briksoftware.javafx.platform.osx;
 import java.io.File;
 
 public class OSXEventHandler extends com.sun.glass.ui.Application.EventHandler {
-	private com.sun.glass.ui.Application.EventHandler handler;
+	private final com.sun.glass.ui.Application.EventHandler handler;
 	private OSXOpenFilesHandler openFilesHandler;
 	
 	public OSXEventHandler(com.sun.glass.ui.Application lowLevelApp) {

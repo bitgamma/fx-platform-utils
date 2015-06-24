@@ -23,9 +23,40 @@
  */
 package com.briksoftware.javafx.platform.osx;
 
-import java.io.File;
 
-@FunctionalInterface
-public interface OSXOpenFilesHandler {
-	public void handleOpenFilesEvent(File[] files);
+public final class OSXIntegration {
+	private static OSXEventHandler osxHandler;
+	private static OSXMenuHandler osxMenuHandler;
+			
+	public static void init() {
+		String currentPlatform = System.getProperty("os.name").toLowerCase();
+
+		if (currentPlatform.startsWith("mac") && osxHandler == null) {
+			com.sun.glass.ui.Application lowLevelApp = com.sun.glass.ui.Application.GetApplication();
+			osxHandler = new OSXEventHandler(lowLevelApp);
+			osxMenuHandler = new OSXMenuHandler(lowLevelApp);
+		}
+	}
+	
+	public static void installHandlers() {
+		com.sun.glass.ui.Application.GetApplication().setEventHandler(osxHandler);
+	}
+	
+	public static boolean setOpenFilesHandler(OSXOpenFilesHandler openFilesHandler) {
+		if (osxHandler != null) {
+			osxHandler.setOSXOpenFilesHandler(openFilesHandler);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static boolean populateAppleMenu(Runnable aboutCallback, Runnable preferencesCallback) {
+		if (osxMenuHandler != null) {
+			osxMenuHandler.populateAppleMenu(aboutCallback, preferencesCallback);
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

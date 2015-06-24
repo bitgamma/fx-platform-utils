@@ -9,8 +9,8 @@ import com.sun.glass.ui.Menu;
 import com.sun.glass.ui.MenuItem;
 
 public class OSXMenuHandler {
-	private com.sun.glass.ui.Application app;
-	private ResourceBundle i18n;
+	private final com.sun.glass.ui.Application app;
+	private final ResourceBundle i18n;
 
 	public OSXMenuHandler(com.sun.glass.ui.Application app) {
 		this.app = app;
@@ -21,6 +21,7 @@ public class OSXMenuHandler {
 		com.sun.glass.ui.Menu appleMenu = getAppleMenu();
 
 		ArrayList<com.sun.glass.ui.MenuItem> savedMenus = new ArrayList<>();
+		assert appleMenu != null;
 		List<Object> oldMenus = appleMenu.getItems();
 		
 		for (int i = oldMenus.size(); i > 0; i--) {
