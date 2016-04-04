@@ -5,7 +5,7 @@ import java.io.File;
 public class OSXEventHandler extends com.sun.glass.ui.Application.EventHandler {
 	private final com.sun.glass.ui.Application.EventHandler handler;
 	private OSXOpenFilesHandler openFilesHandler;
-	
+
 	public OSXEventHandler(com.sun.glass.ui.Application lowLevelApp) {
 		handler = lowLevelApp.getEventHandler();
 	}
@@ -115,7 +115,13 @@ public class OSXEventHandler extends com.sun.glass.ui.Application.EventHandler {
 
 	@Override
 	public void handleOpenFilesAction(com.sun.glass.ui.Application app, long time, String[] files) {	
-		if (openFilesHandler != null) {
+    if (files.length == 1 && files[0].matches(".*\\.jar:.*\\.jar$")) {
+      // Starting from an IDE causes the handler to be invoked with the classpath once, this is an attempt
+      // to filter the classpath while still allowing jar files to be handled if needed
+      return;
+    }
+
+    if (openFilesHandler != null) {
 			File[] fileObjects = new File[files.length];
 			
 			for (int i = 0; i < files.length; i++) {
